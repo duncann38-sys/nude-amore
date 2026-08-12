@@ -1,4 +1,3 @@
-
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About Us · Nude Amore</title>
@@ -199,6 +198,103 @@ footer{background:var(--wine-deep);padding:64px clamp(20px,5vw,64px) 44px;text-a
 /* parallax band bg hook */
 .band .bg{will-change:transform}
 @media(prefers-reduced-motion:reduce){.kenburns .bg img{animation:none}.deco-rule::after{animation:none}.reveal-slow{opacity:1;transform:none;filter:none}.mural .bg,.band .bg{transform:none!important}}
+
+/* ===== shop ambient background montage ===== */
+.ambient-on{background:#0d0a08}
+.ambient{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#0d0a08}
+.ambient .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;
+  filter:grayscale(.4) sepia(.16) brightness(.72) contrast(1.04);
+  animation:ambcycle 56s infinite ease-in-out;will-change:opacity,transform}
+.ambient .veil{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 30%,rgba(13,10,8,.55),rgba(13,10,8,.78))}
+@keyframes ambcycle{
+  0%{opacity:0;transform:scale(1.02)}
+  2%{opacity:.5}
+  11%{opacity:.5}
+  14.28%{opacity:0;transform:scale(1.14)}
+  100%{opacity:0;transform:scale(1.14)}
+}
+/* let the montage bleed through the shop sections, subtly */
+.ambient-on nav,.ambient-on .page-hero,.ambient-on section,.ambient-on footer{position:relative;z-index:1}
+.ambient-on .page-hero{background:linear-gradient(180deg,rgba(23,17,15,.72),rgba(27,19,16,.7))}
+.ambient-on section{background:rgba(20,15,13,.66)}
+.ambient-on section.tint-dark{background:linear-gradient(180deg,rgba(36,26,22,.74),rgba(27,19,16,.76))}
+.ambient-on section.featured{background:linear-gradient(120deg,rgba(42,22,32,.6),rgba(22,15,13,.62))}
+.ambient-on section.band{background:transparent}
+.ambient-on section.band .veil{background:linear-gradient(180deg,rgba(23,17,15,.66),rgba(62,14,27,.55))}
+.ambient-on footer{background:rgba(62,14,27,.82)}
+/* keep product cards fully crisp above the montage */
+.ambient-on .card{background:linear-gradient(180deg,#241a13,#17110e);position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){
+  .ambient .slide{animation:none;opacity:0}
+  .ambient .slide:first-child{opacity:.16}
+}
+
+/* ===== CREAM SHOP + 3-UP MONTAGE ===== */
+body.cream-shop{background:#EFE3D6;color:#2b1d15}
+.ambient.grid{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#EFE3D6}
+.ambient.grid .col{position:absolute;top:0;bottom:0;width:calc(33.334% - 3px);overflow:hidden}
+.ambient.grid .col:nth-child(1){left:0}
+.ambient.grid .col:nth-child(2){left:calc(33.333% + 1.5px)}
+.ambient.grid .col:nth-child(3){left:calc(66.666% + 3px)}
+.ambient.grid .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;filter:grayscale(.22) contrast(1.04) brightness(.98);animation:ambg 42s infinite ease-in-out;will-change:opacity,transform}
+.ambient.grid .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(239,227,214,.32),rgba(239,227,214,.48))}
+@keyframes ambg{0%{opacity:0;transform:scale(1.03)}2%{opacity:.74}12%{opacity:.74}14.28%{opacity:0;transform:scale(1.17)}100%{opacity:0;transform:scale(1.17)}}
+/* content above montage */
+.cream-shop nav,.cream-shop .page-hero,.cream-shop section,.cream-shop footer{position:relative;z-index:1}
+/* translucent cream sections so montage shows through */
+.cream-shop .page-hero{background:linear-gradient(180deg,rgba(239,227,214,.86),rgba(239,227,214,.74));border-bottom:1px solid rgba(154,107,63,.22)}
+.cream-shop .page-hero h1{color:#241109}.cream-shop .page-hero h1 em{color:#7a2233}.cream-shop .page-hero p{color:#5a4636}
+.cream-shop .eyebrow{color:#9a6b3f}
+.cream-shop section{background:rgba(239,227,214,.42)}
+.cream-shop .subhead h2{color:#241109}.cream-shop .subhead h2 em{color:#7a2233}.cream-shop .subhead p{color:#5a4636}
+/* product cards: solid & crisp on cream */
+.cream-shop .card{background:#fffaf3;border:1px solid rgba(154,107,63,.24)}
+.cream-shop .card .style{color:#9a6b3f}
+.cream-shop .card h3{color:#241109}
+.cream-shop .card .case-label,.cream-shop .card .sweet{color:#8a5a34}
+.cream-shop .card .desc{color:#5a4636}
+.cream-shop .card .price{color:#241109}
+.cream-shop .card .add{background:#241109;color:#f6ece2}
+.cream-shop .card .add:hover{background:#3a1a12}
+.cream-shop .card.rose{background:#fdf2ef}
+/* featured rosé block on cream */
+.cream-shop section.featured{background:linear-gradient(120deg,rgba(250,238,240,.62),rgba(244,235,226,.56))}
+.cream-shop .fcard{background:rgba(255,250,243,.82);border-color:rgba(154,107,63,.3)}
+.cream-shop .fcard .fname{color:#241109}.cream-shop .fcard .fstyle{color:#9a6b3f}.cream-shop .fcard .fprice{color:#241109}.cream-shop .fcard .fcase{color:#8a5a34}.cream-shop .fcard .fbtn{background:#241109;color:#f6ece2}.cream-shop .fcard .fbtn:hover{background:#3a1a12}.cream-shop .fcard .fship{color:#5a4636}
+/* serve/store/pair on cream */
+.cream-shop section.tint-dark{background:rgba(233,221,209,.55)}
+.cream-shop .info{border-top-color:rgba(154,107,63,.32)}
+.cream-shop .info h3{color:#241109}.cream-shop .info h3 em{color:#7a2233}.cream-shop .info p{color:#5a4636}.cream-shop .info .k{color:#9a6b3f}
+.cream-shop .pair{border-bottom-color:rgba(154,107,63,.22)}.cream-shop .pair .s{color:#9a6b3f}.cream-shop .pair .d{color:#5a4636}
+.cream-shop .tiny{color:#6a5443}
+.cream-shop section.band{background:transparent}
+@media(max-width:640px){.ambient.grid .col{width:100%;left:0!important}.ambient.grid .col:nth-child(2),.ambient.grid .col:nth-child(3){display:none}}
+@media(prefers-reduced-motion:reduce){.ambient.grid .slide{animation:none;opacity:0}.ambient.grid .col .slide:first-child{opacity:.5}}
+
+/* ===== ACCENTS: cream · vine green · off-white (keep the dark base) ===== */
+:root{--sage:#A6B98C;--olive:#7C8B54;--emerald:#24382C;--emerald-2:#182720;--offwhite:#F3EEE6}
+/* off-white cream sections a touch brighter */
+.tint-light{background:var(--offwhite)}
+/* deep vine-green panels on the dark pages (not the cream shop) */
+body:not(.cream-shop) .tint-dark{background:linear-gradient(180deg,#24382C 0%,#182720 100%)}
+body:not(.cream-shop) .tint-dark .eyebrow{color:var(--sage)}
+body:not(.cream-shop) .tint-dark h2 em{color:var(--sage)}
+/* hero: soft green glow accent, low-left */
+.hero{isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(55% 55% at 13% 24%,rgba(124,139,84,.20),transparent 62%);z-index:1;pointer-events:none}
+/* wine-note chips → sage green */
+.wine-sec .chip{border-color:rgba(166,185,130,.55);color:var(--sage)}
+/* alternate stat rules in sage for rhythm */
+.stat:nth-child(2n){border-top-color:rgba(166,185,130,.5)}
+/* mural deco-rule keeps gold; add a green kiss to section deco rules elsewhere */
+.tint-dark .deco-rule{background:linear-gradient(90deg,transparent,var(--sage),transparent)}
+/* CREAM SHOP: olive-green accents on the cream */
+.cream-shop .eyebrow{color:var(--olive)}
+.cream-shop .card .style,.cream-shop .card .sweet,.cream-shop .pair .s,.cream-shop .info .k,.cream-shop .fcard .fstyle,.cream-shop .fcard .fcase,.cream-shop .card .case-label{color:var(--olive)}
+.cream-shop .card{border-color:rgba(124,139,84,.28)}
+/* news band: a hint of green in the wash */
+.news{background:linear-gradient(180deg,#17110F 0%,#1e2a22 55%,#24382C 100%)}
+.news h2 em{color:var(--sage)}
 </style></head><body>
 <nav id="nav" class="scrolled">
   <a href="index.html" class="brand">Nude Amore</a>
