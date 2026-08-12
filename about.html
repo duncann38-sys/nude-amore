@@ -1,3 +1,4 @@
+
 <!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About Us · Nude Amore</title>
@@ -173,6 +174,31 @@ footer{background:var(--wine-deep);padding:64px clamp(20px,5vw,64px) 44px;text-a
 /* case cards */
 .card .case-label{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--skin);opacity:.85;margin-top:2px}
 .card .per{font-size:.72rem;color:var(--nude);opacity:.7;margin-left:8px}
+
+/* ===== luxury motion + mural ===== */
+@keyframes kb{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.12) translate(1.2%, -1.4%)}}
+.kenburns .bg img{animation:kb 26s ease-in-out infinite alternate}
+.reveal-slow{opacity:0;transform:translateY(42px);filter:blur(7px);transition:opacity 1.5s cubic-bezier(.19,1,.22,1),transform 1.5s cubic-bezier(.19,1,.22,1),filter 1.5s ease}
+.reveal-slow.in{opacity:1;transform:none;filter:none}
+.deco-rule{width:70px;height:1px;margin:0 auto;position:relative;background:linear-gradient(90deg,transparent,var(--gold),transparent);overflow:hidden}
+.deco-rule::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,245,220,.9),transparent);transform:translateX(-100%);animation:sheen 4.5s ease-in-out infinite}
+@keyframes sheen{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+/* mural band */
+.mural{padding:0;position:relative;min-height:92vh;display:flex;align-items:flex-end;justify-content:center;text-align:center;overflow:hidden;background:#0e0b09}
+.mural .bg{position:absolute;inset:-9% 0;height:118%;will-change:transform}
+.mural .bg img{width:100%;height:100%;object-fit:cover}
+.mural-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,11,9,.28) 0%,rgba(14,11,9,.05) 38%,rgba(14,11,9,.55) 78%,rgba(14,11,9,.92) 100%)}
+.mural-frame{position:absolute;inset:22px;border:1px solid rgba(198,161,91,.55);pointer-events:none;z-index:3}
+.mural-frame::after{content:"";position:absolute;inset:6px;border:1px solid rgba(198,161,91,.28)}
+.mural-inner{position:relative;z-index:4;padding:0 clamp(20px,5vw,64px) clamp(60px,9vh,110px);max-width:840px}
+.mural-inner .eyebrow{margin-bottom:20px;text-shadow:0 2px 20px rgba(0,0,0,.5)}
+.mural-inner h2{font-size:clamp(2.6rem,7vw,5.6rem);color:var(--cream);line-height:1.02;text-shadow:0 4px 30px rgba(0,0,0,.55)}
+.mural-inner h2 em{font-style:italic;color:var(--gold-soft)}
+.mural-inner p{color:var(--nude-soft);font-size:clamp(1.05rem,2vw,1.28rem);max-width:46ch;margin:24px auto 0;text-shadow:0 2px 18px rgba(0,0,0,.6)}
+.mural-inner .deco-rule{margin-top:34px}
+/* parallax band bg hook */
+.band .bg{will-change:transform}
+@media(prefers-reduced-motion:reduce){.kenburns .bg img{animation:none}.deco-rule::after{animation:none}.reveal-slow{opacity:1;transform:none;filter:none}.mural .bg,.band .bg{transform:none!important}}
 </style></head><body>
 <nav id="nav" class="scrolled">
   <a href="index.html" class="brand">Nude Amore</a>
@@ -214,6 +240,8 @@ const nav=document.getElementById('nav');
 addEventListener('scroll',()=>{if(!nav.dataset.solid)nav.classList.toggle('scrolled',scrollY>40)});
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{if(innerWidth<=900){document.querySelector('.nav-links').style.display='none'}}));
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.14});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.reveal,.reveal-slow').forEach(el=>io.observe(el));
+const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!rm){const px=[...document.querySelectorAll('.parallax')];function pfx(){const vh=innerHeight;px.forEach(el=>{const r=el.getBoundingClientRect();const c=r.top+r.height/2;const off=(c-vh/2)/vh;el.style.transform='translateY('+(off*-46).toFixed(1)+'px)';});}addEventListener('scroll',pfx,{passive:true});addEventListener('resize',pfx);pfx();}
 </script>
 </body></html>
